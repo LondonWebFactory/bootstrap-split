@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+
+    <title>Hello, world!</title>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <style>
+        html,
+        body {
+            height: 100%;
+        }
+        .navbar {
+            height:50px !important;
+        }
+        .container-fluid {
+            height: calc(100% - 50px);
+        }
+        .gutter {
+            background-color: #6c757d!important;
+            background-color: transparent;
+            background-repeat: no-repeat;
+            background-position: 50%;
+        }
+        .gutter.gutter-horizontal {
+            cursor: col-resize;
+            background-image: url('vertical.png');
+        }
+
+        .gutter.gutter-vertical {
+            cursor: row-resize;
+            background-image: url('horizontal.png');
+        }
+        
+    </style>
+
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand navbar-dark bg-dark">
+
+        <a class="navbar-brand" href="#">SEO Site Spider Pro</a>
+
+    </nav>
+
+    <div class="container-fluid">
+
+        <div id="top-row" class="row">
+
+            <div id="tlh-col" class="col-sm">
+                One of two columns
+            </div>
+
+            <div id="trh-col" class="col-sm">
+                One of two columns
+            </div>
+        </div>
+
+        <div id="bottom-row" class="row">
+
+            <div class="col-sm">
+                One of two columns
+            </div>
+
+        </div>
+    </div>
+
+
+    <!-- JavaScript -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/split.js/1.5.11/split.min.js"></script>
+
+    <script>
+        // Top Row Side-by-Side
+        Split(['#tlh-col', '#trh-col'], {
+            sizes: [75, 25],
+            minSize: 200,
+            elementStyle: function (dimension, size, gutterSize) {
+                return {
+                    'flex-basis': 'calc(' + size + '% - ' + gutterSize + 'px)',
+                }
+            },
+            gutterStyle: function (dimension, gutterSize) {
+                return {
+                    'flex-basis': gutterSize + 'px',
+                }
+            },
+        })
+
+        // Top and Bottom
+        Split(['#top-row', '#bottom-row'], {
+            sizes: [75, 25],
+            minSize: 200,
+            direction: 'vertical'
+        })
+
+
+    </script>
+
+
+</body>
+
+</html>
