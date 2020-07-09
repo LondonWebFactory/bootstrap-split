@@ -1,0 +1,87 @@
+<!-- 
+    No Library Here! Here is a very simple example of a vertical page splitter using fixed positioning and pure CSS/JS.
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+    <style>
+        :root {
+            --x-dragger-width: 16px;
+            --x-dragger-left: 50%;
+        }
+
+        .left {
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            width: var(--x-dragger-left);
+            background-color: deepskyblue;
+        }
+
+        .right {
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            left: calc(var(--x-dragger-left) + var(--x-dragger-width));
+            background-color: orange;
+        }
+
+        .v-drag {
+            cursor: pointer;
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            left: var(--x-dragger-left);
+            width: var(--x-dragger-width);
+            background-color: orchid;
+
+        }
+
+        .v-drag:after {
+            position: absolute;
+            font-family: 'Material Icons';
+            content: "\e5d4";
+            top: 50%;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div class="left">
+    </div>
+
+    <div class="v-drag">
+    </div>
+
+    <div class="right">
+    </div>
+
+    <script>
+        document.querySelector('.v-drag').addEventListener("drag", function (e) {
+            if (parseInt(e.pageX) != 0) {
+                set_css_var('--x-dragger-left', `${e.pageX}px`)
+            }
+        }, false);
+
+        set_css_var = (prop, val) => {
+
+            document.documentElement.style.setProperty(prop, val)
+        }
+    </script>
+
+
+</body>
+
+</html>
