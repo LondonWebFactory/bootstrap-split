@@ -1,0 +1,83 @@
+<!-- 
+    No Library Here! Here is a very simple example of a horizontal page splitter using fixed positioning and pure CSS/JS.
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+    <style>
+        :root {
+            --y-dragger-width: 16px;
+            --y-dragger-top: 50%;
+        }
+
+        .top {
+            position: fixed;
+            top: 0;
+            right: 0;
+            left: 0;
+            height: var(--y-dragger-top);
+            background-color: deepskyblue;
+        }
+
+        .bottom {
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            top: calc(var(--y-dragger-top) + var(--y-dragger-width));
+            background-color: orange;
+        }
+
+        .h-drag {
+            cursor: pointer;
+            position: fixed;
+            left: 0;
+            right: 0;
+            top: var(--y-dragger-top);
+            height: var(--y-dragger-width);
+            background-color: orchid;
+        }
+
+        .h-drag:after {
+            position: absolute;
+            font-family: 'Material Icons';
+            content: "\e5d3";
+            left: 50%;
+        }
+    </style>
+
+
+</head>
+
+<body>
+
+    <div class="top">
+    </div>
+
+    <div class="h-drag">
+    </div>
+
+    <div class="bottom">
+    </div>
+
+    <script>
+        document.querySelector('.h-drag').addEventListener("drag", function (e) {
+            if (parseInt(e.pageY) != 0) { // e.pageY jumps to 0 on mouse up
+                document.documentElement.style.setProperty('--y-dragger-top', `${e.pageY}px`)
+                set_css_var('--y-dragger-top', `${e.pageY}px`)
+            }
+        }, false);
+    </script>
+
+
+</body>
+
+</html>
